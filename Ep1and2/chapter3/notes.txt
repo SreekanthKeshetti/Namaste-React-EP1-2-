@@ -1,0 +1,4 @@
+Till now we were using the npx parcel index.html to run the program it means we are executing the parcel package with index.html as the base file but now on we write the npm scripts to run.
+In the package.json file under the scripts :"start":"parcel index.html", "build":"parcel build index.html",
+so now to start project we can just use : npm run start and for production build npm run build .
+The shorthand for the npm run start is nom start but do remember it is not applicable for the build.

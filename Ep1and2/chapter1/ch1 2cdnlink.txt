@@ -1,0 +1,51 @@
+The react cdns have two links because of react uses in different ways or platforms so to make the core functionalites of web into one and dom ?
+
+
+ChatGPT said:
+You're on the right track! Let me clarify it clearly:
+
+When using React via CDNs (instead of bundlers like Webpack or tools like Create React App), you typically include two CDN links:
+
+React core library:
+react.development.js or react.production.min.js
+This contains the core React API — like React.createElement, useState, useEffect, etc.
+
+React DOM library:
+react-dom.development.js or react-dom.production.min.js
+This provides the methods to render React components into the DOM, like ReactDOM.render() or ReactDOM.createRoot().
+
+Why are there two libraries?
+React is designed to be platform-agnostic at its core. This means:
+
+The React core handles the logic for components, hooks, and the virtual DOM.
+
+The React DOM package provides the web-specific rendering implementation.
+
+This separation allows React to be used in other environments too, such as:
+
+React Native for mobile apps
+
+React 360 or React VR
+
+Ink for command-line interfaces
+
+Each of these platforms has its own renderer package (like react-native, react-ink, etc.) that works with the same React core.
+
+Summary
+Yes, React uses two CDN links because:
+
+react contains platform-independent core logic
+
+react-dom contains the web-specific rendering logic
+
+This modularity makes React flexible and adaptable to different platforms beyond just the web.
+
+
+
+
+
+
+
+Tools
+
+

@@ -1,0 +1,56 @@
+Package.json is the configuration for the npm.
+what are dependecies?what npm does to them?
+what ar bundles and why are they important?
+The Bundler is somethings that bundles together or minimises  or cached or compressed and cleaned all the files like html,ccs and reactjs before we send or make it production. (parser,webpack and vite)
+Now we will use the parcel as bundler it is to configure.Now to use parcel we have to install it first as it is a package we can install it with the command : 
+npm install -D parcel command.
+And here we use the -D because we have 2 kinds of dependecies dev dependecies and normal dependecies. The dev dependecies will be generally required in development phases where as normal dependecies are used in production also . So here as we need pacel only in development we say our npm (package manager ) that i want this parcel as -D dev dependecy.
+once we install we get the dev dependecies in the package.json file and we can also observe the another file titled package-lock.json.
+And here in the dev dependecies we can see the version of the parcel and we see the symbol ^ this is called the caret and it is very helpfull, what it does is after our installation if there is any upgrade in parcel and if the upgrade is a minor upgrade it will automatically updates it . what about if there is a major update???
+we can also use the tilda ~ it will help in automatically upgrading for the major updates.
+Now Package-lock.json: package-lock.json keeps a track of all the dependecies and its exact versions so that the app will not break in the production. It locks the package.json with exact versions of the packages.
+We can also see the node modules folder created when we installed the parcel.
+The node_modules are like database or library where all the packages or dependecies have there whole code . And another imp thing is all these folder or packages in node_modules also will have seperate and dedicated package.json files .
+we many get this doubt when i have installed or used the parcel i must see only node_modules for the parcel but what are all these folder in here? 
+The answer is we have just installed the parcel but the parcel will also its own package it dependent or its dependecies we see those folder and those folder also will have there dependecies and so on so hence we have many pacakage or folder in the node_modules this is called the transtive dependecies.
+When we want to put our code in github or production we dont carry the node_modules there we delete them because we can recreate the node modules if we have the package.json so what ever that can be recreated will be deleted when the code goes for the production or git hub and to not take the file to git hub we write intorduce a folder or file called .gitignore and we write wate ever the files that are to be ignored by the git .
+lets now lern why the parcel is a beast?
+To build our project with parcel we give the command npx parcel index.html here we give the index.html becase it is the source folder of the project and npx means like npm used to insta;; the package npx is used forexecuting a project.
+As soon as we run this command we see that parcel goes to the index.html and created a  developement build for this project and hosted it on localhost 1234.
+Now lets remove the cdn's and include the react into our project using the npm , as we learned earlier we can iclude the react into our project both the ways and the cdn is not preferable because we have to make a network call and fetch the react package form the unpkg.com and the other issue is if there is any change in version or cdn link we have to manullay update them instead if we use the npm and include the react into our project we have the pacakage configured in our package.json file and no need of those network calls and manul changing our the links.
+we can do this using the command: npm install react
+After running this command we can see the react in the dependeciesof the package.json files and node modules and we the do the same for the react-dom as well with the command:
+npm install react-dom (i can be used as shorthand for install.then npm i react-dom).
+Now we no longer need the cdn so remove them. removed them and again running the command : npx parcel index.html, will it work now?
+NO it will not run because it through a error that react is not defined, we get this error because we have react in our package.json but not imported it so for that we ahve to write a import statement  in app.js : import React from 'react'. write the  thats means the React refers to the react in the node_modules where we have the complete code of the react. DO the same for the react-dom as well.
+we should also write the import statement for the react-dom as well it was runnig fine but i got warning in console to use /client:
+in video: import ReactDOM from"react-dom"
+my sol: import ReactDOM from "react-dom/client".
+
+Now will it work, can we see our code on browser?? no it again shows the error : Browser script can be import or export this comese her bacuase we use the script tag in index.html this treats the script as a normal broswer script(normal js file) but it is not . it is considering the script as normal script and the normal script cant have the import or export. So now we need to tell the the broswer it is not the normal script it is a module so for that we have to update the script with with type="module" : 
+<script type="module" src="app.js" ></script>
+now writing module the broswer will not consider this as a normal script tag instead treats as a module so that we can have the import and export on this file. hence our code works.
+
+As soon as we run the npx parcel index.html we can see a folder titled Dist is created and the index.html and js files.
+
+// Another important thing from parcel is when ever we make changes in our code it will be very fastly refelected on the screen and that we very fast this is the power of the parcel. This is happening beacuse the parecl is doing something called  HMR: hot module replacement.
+. firstly it build the application from the entry point index.html(DEV BUILD)
+. Then it will create a development server and hosts it on to it(DE SERVER AND HOSTING).
+. THen tracks the chanesga nd upadtes the UI very  fastly (HMR) parcel is doing this using    file watching algorithm and this is written in c++
+.The parcel is building on every chaneg and it can do this beacause it is caching, (caching-faster builds) Now you must get a doubt of where is it caching things up??. 
+As soon as we installed parcel and we build the parcel it quickly sleek into our project and also it took some space can be seen above node_modules, and caching every thing we do thus the next pages are build faster.  and thus supporting the HMR.
+Parcel also bundles up and minifies tha folders when we build production development.
+{It does many things that makes the react so powerful and fast. It also dont do al the things but it also have many pak and it manages all of them.
+}
+It will be doing the Consistent Hasing.
+it will do Code Splitting.
+Differential Bundling: it supports older browsers.
+Image Optimisation.
+Does diagnostics and gives errors in console.
+Tree Shaking: this tree shaking algorithm does is in our whole code suppose 100 functions and we use only 40 fucntions then parcel using this algorithm tree shakes and removes the unused code .
+How to create a production build :
+to create a production build we use the command npx parcel build index.html when we run this folder it bundles and put the files in the dist folder. This dist folder is created when we run the parcel command and her where the parcelfirst creates a dev and rendered on screen and whenwe build for prod it also pushes the code here. see it very few time for the building the dev build but if we delete this build (dev) and run the parcel prod build it takes more time . dont worry that we have deleted the dev build we can get the build any time, but as observed it takes more time for the prod than dev .
+The production is servered and it is optimised and fast.
+Parcel cache and dist can be we can create these files can be regenerated so what ever the files that can be regenerated should not be pushed into github and so we can also include the dist and parcel-cache inside the inside the .gotignore along with the node-modules.
+Lets makes our APP COMPATABLE for older versions:
+for thise we use something known as browsersList it can see in the node-modules, we have to tell the browsersList what are the broswer we have to support. "what all browsers your app has to be supported in"  we configure it inside the package.json and inside the browsersList["last 10 chrome versions","last 2 firefox verions"] : when we give this it might or might work in other browsers but it will definitley work in the mentioned browser vesrions.

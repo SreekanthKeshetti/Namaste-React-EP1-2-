@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root">
+      <!-- 1.1  -->
+      <h1>Hello from HTML</h1>
+      <!-- see we have this h1 from html but when we started writing from react this is not being rendered on screen  this is because root.render will replace this existing code.  -->
+
+      <!--  
+      <script>
+        // ********1.2**************
+
+        // when we want to show data from javascript first we create the element in javascript then we write/save the content of the element inot a variable  . Now we get hold of the select(id or class ) where we want this created element to be placed by using querySelector or getElementById or Class and we append the created element on to the caught selector node.
+        // Here we are able to write the js code and display because of the environment and document that browser is giving this access of js fucntionalities and all features beacuse browser has the DOM API.
+
+        const heading = document.createElement("h1");
+        heading.innerHTML = "Hello World from JavaScript";
+        const root = document.getElementById("root");
+        root.appendChild(heading);
+
+                // ********1.2**************
+
+        // 1.3##################################
+        // similarly if we want to write something in react and display on the screen we first need to get that environment into our code or browser so that we can also use it properties functionalities and features. For that we need to link the code with react this can be done via CDN or Installing the react app and its packages.
+      </script>
+      -->
+      <!-- <script
+        crossorigin
+        src="https://unpkg.com/react@18/umd/react.development.js"
+      ></script>
+      <script
+        crossorigin
+        src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      ></script> -->
+      <script type="module" src="App.js"></script>
+    </div>
+  </body>
+</html>
